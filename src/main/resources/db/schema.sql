@@ -3,7 +3,7 @@ CREATE TABLE student (
     name VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_thai_520_w2 NOT NULL,
     surname VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_thai_520_w2 NOT NULL,
     birthday DATE NOT NULL,
-    yearjoin INT NOT NULL,
+    year_join INT NOT NULL,
     faculty VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_thai_520_w2 NOT NULL,
     major VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_thai_520_w2 NOT NULL,
     gpa DECIMAL(3,2) CHECK (gpa BETWEEN 0.00 AND 4.00),

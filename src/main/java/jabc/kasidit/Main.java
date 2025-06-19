@@ -1,9 +1,14 @@
 package jabc.kasidit;
 
+import jabc.kasidit.config.DatabaseConfig;
+import jabc.kasidit.dao.StudentDAO;
+import jabc.kasidit.model.Student;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Main {
@@ -16,36 +21,22 @@ public class Main {
             );
             System.out.println("✅ Connected to MySQL!");
 
-            UserDAO userDAO = new UserDAO(conn);
+            StudentDAO studentDAO = new StudentDAO(conn);
 
-            // ==== CREATE ====
-            User newUser = new User(1, "Kasidit", "Korn", Date.valueOf("2000-01-01"), "Bangkok");
-            boolean inserted = userDAO.insertUser(newUser);
-            System.out.println(inserted ? "✅ User inserted." : "❌ Insert failed.");
-
-            // ==== READ ====
-            User fetchedUser = userDAO.getUserById(1);
-            if (fetchedUser != null) {
-                System.out.println("✅ User found: " + fetchedUser.getName());
-            } else {
-                System.out.println("❌ User not found.");
-            }
-
-            // ==== UPDATE ====
-            fetchedUser.setAddress("Pathum Thani");
-            boolean updated = userDAO.updateUser(fetchedUser);
-            System.out.println(updated ? "✅ User updated." : "❌ Update failed.");
-
-            // ==== READ ALL ====
-            List<User> allUsers = userDAO.getAllUsers();
-            System.out.println("📄 All users in DB:");
-            for (User user : allUsers) {
-                System.out.println(" - " + user.getName() + " (" + user.getAddress() + ")");
-            }
-
-            // ==== DELETE ====
-            boolean deleted = userDAO.deleteUser(1);
-            System.out.println(deleted ? "✅ User deleted." : "❌ Delete failed.");
+            //Create
+            Student student = new Student.Builder()
+                    .Id(1)
+                    .Name("Kasidit")
+                    .Surname("Kornsang")
+                    .Birthday(Date.valueOf(LocalDate.of(2004, 6, 25)))
+                    .YearJoin(65)
+                    .Faculty("Engineering")
+                    .Major("Computer")
+                    .Gpa(0.00)
+                    .StudentStatus(Student.STATUS.active)
+                    .build();
+            boolean created = studentDAO.addStudent(student);
+            System.out.println(created ? "✅ User inserted." : "❌ Insert failed.");
 
             conn.close();
         } catch (SQLException e) {

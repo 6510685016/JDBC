@@ -1,4 +1,4 @@
-package jabc.kasidit;
+package jabc.kasidit.config;
 
 public class DatabaseConfig {
     public static final String URL = "jdbc:mysql://localhost:3306/test1";
