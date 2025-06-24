@@ -1,6 +1,6 @@
-package jabc.kasidit.dao;
+package basic.jdbc.dao;
 
-import jabc.kasidit.model.Semester;
+import basic.jdbc.model.Semester;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +36,9 @@ public class SemesterDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     return new Semester.Builder()
-                            .SemesterId(rs.getInt("semester_id"))
-                            .Year(rs.getInt("year"))
-                            .Term(rs.getString("term"))
+                            .semesterId(rs.getInt("semester_id"))
+                            .year(rs.getInt("year"))
+                            .term(rs.getString("term"))
                             .build();
                 }
             }
@@ -85,9 +85,9 @@ public class SemesterDAO {
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 semesters.add( new Semester.Builder()
-                        .SemesterId(rs.getInt("semester_id"))
-                        .Year(rs.getInt("year"))
-                        .Term(rs.getString("term"))
+                        .semesterId(rs.getInt("semester_id"))
+                        .year(rs.getInt("year"))
+                        .term(rs.getString("term"))
                         .build()
                 );
             }

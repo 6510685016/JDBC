@@ -1,4 +1,4 @@
-package jabc.kasidit.model;
+package basic.jdbc.model;
 
 public class Course {
     private int courseId;

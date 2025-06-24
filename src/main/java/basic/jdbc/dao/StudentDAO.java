@@ -1,5 +1,5 @@
-package jabc.kasidit.dao;
-import jabc.kasidit.model.Student;
+package basic.jdbc.dao;
+import basic.jdbc.model.Student;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -44,15 +44,15 @@ public class StudentDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     return new Student.Builder()
-                            .Id(rs.getInt("id"))
-                            .Name(rs.getString("name"))
-                            .Surname(rs.getString("surname"))
-                            .Birthday(rs.getDate("birthday"))
-                            .YearJoin(rs.getInt("yearJoin"))
-                            .StudentStatus(Student.STATUS.valueOf(rs.getString("studentStatus")))
-                            .Major(rs.getString("major"))
-                            .Gpa(rs.getDouble("gpa"))
-                            .StudentStatus(Student.STATUS.valueOf(rs.getString("studentStatus")))
+                            .id(rs.getInt("id"))
+                            .name(rs.getString("name"))
+                            .surname(rs.getString("surname"))
+                            .birthday(rs.getDate("birthday"))
+                            .yearJoin(rs.getInt("yearJoin"))
+                            .studentStatus(Student.STATUS.valueOf(rs.getString("studentStatus")))
+                            .major(rs.getString("major"))
+                            .gpa(rs.getDouble("gpa"))
+                            .studentStatus(Student.STATUS.valueOf(rs.getString("studentStatus")))
                             .build();
                 }
             }

@@ -1,4 +1,4 @@
-package jabc.kasidit.model;
+package basic.jdbc.model;
 
 import java.sql.Date;
 
@@ -56,47 +56,47 @@ public class Student {
         private double gpa;
         private STATUS studentStatus;
 
-        public Builder Id(int id) {
+        public Builder id(int id) {
             this.id = id;
             return this;
         }
 
-        public Builder Name(String name) {
+        public Builder name(String name) {
             this.name = name;
             return this;
         }
 
-        public Builder Surname(String surname) {
+        public Builder surname(String surname) {
             this.surname = surname;
             return this;
         }
 
-        public Builder Birthday(Date birthday) {
+        public Builder birthday(Date birthday) {
             this.birthday = birthday;
             return this;
         }
 
-        public Builder YearJoin(int yearJoin) {
+        public Builder yearJoin(int yearJoin) {
             this.yearJoin = yearJoin;
             return this;
         }
 
-        public Builder Faculty(String faculty) {
+        public Builder faculty(String faculty) {
             this.faculty = faculty;
             return this;
         }
 
-        public Builder Major(String major) {
+        public Builder major(String major) {
             this.major = major;
             return this;
         }
 
-        public Builder Gpa(double gpa) {
+        public Builder gpa(double gpa) {
             this.gpa = gpa;
             return this;
         }
 
-        public Builder StudentStatus(STATUS studentStatus) {
+        public Builder studentStatus(STATUS studentStatus) {
             this.studentStatus = studentStatus;
             return this;
         }

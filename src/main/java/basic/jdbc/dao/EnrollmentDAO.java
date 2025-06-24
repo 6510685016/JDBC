@@ -1,6 +1,6 @@
-package jabc.kasidit.dao;
+package basic.jdbc.dao;
 
-import jabc.kasidit.model.Enrollment;
+import basic.jdbc.model.Enrollment;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

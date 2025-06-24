@@ -1,4 +1,4 @@
-package jabc.kasidit.model;
+package basic.jdbc.model;
 
 public class Semester {
     private int semesterId;
@@ -20,17 +20,17 @@ public class Semester {
         private int year;
         private String term;
 
-        public Builder SemesterId(int semesterId) {
+        public Builder semesterId(int semesterId) {
             this.semesterId = semesterId;
             return this;
         }
 
-        public Builder Year(int year) {
+        public Builder year(int year) {
             this.year = year;
             return this;
         }
 
-        public Builder Term(String term) {
+        public Builder term(String term) {
             this.term = term;
             return this;
         }

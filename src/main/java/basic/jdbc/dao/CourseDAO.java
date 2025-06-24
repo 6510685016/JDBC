@@ -1,6 +1,6 @@
-package jabc.kasidit.dao;
+package basic.jdbc.dao;
 
-import jabc.kasidit.model.Course;
+import basic.jdbc.model.Course;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
