@@ -14,11 +14,12 @@ public class SemesterDAO {
 
     // Create
     public boolean addSemester(Semester semester) {
-        String sql = "INSERT INTO semester (year, term) VALUES (?, ?)";
+        String sql = "INSERT INTO semester (semester_id ,year, term) VALUES (?, ?, ?)";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, semester.getYear());
-            stmt.setString(2, semester.getTerm());
+            stmt.setInt(1, semester.getSemesterId());
+            stmt.setInt(2, semester.getYear());
+            stmt.setString(3, semester.getTerm());
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();

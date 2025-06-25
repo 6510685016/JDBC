@@ -15,9 +15,11 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-public class Main {
+public class Tranmission {
     public static void main(String[] args) {
         try (Connection conn = ConnectionPool.getDataSource().getConnection()) {
+            conn.setAutoCommit(false); // ปิด Auto-commit
+
             System.out.println("✅ Connected to MySQL via Connection Pool!");
 
             StudentDAO studentDAO = new StudentDAO(conn);
@@ -67,13 +69,15 @@ public class Main {
                     .build();
             boolean enrolled = enrollmentDAO.addEnrollment(enrollment);
 
-            // แสดงผลลัพธ์
             if (studentCreated && courseCreated && semesterCreated && enrolled) {
+                conn.commit(); // ✅ commit ถ้าทุกอย่างผ่าน
                 System.out.println("✅ Enrollment successful.");
             } else {
-                System.out.println("❌ Some insertions failed.");
+                conn.rollback(); // ❌ rollback ถ้ามีอันใดอันหนึ่งล้มเหลว
+                System.out.println("❌ Some insertions failed. Rolled back.");
             }
 
+            // Clean up (จะไม่ commit/rollback ส่วนนี้ ให้ทำแยก หรือใช้ transaction ใหม่)
             enrollmentDAO.deleteEnrollment(1);
             semesterDAO.deleteSemester(1);
             courseDAO.deleteCourse(1);

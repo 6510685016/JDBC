@@ -14,14 +14,15 @@ public class EnrollmentDAO {
 
     // Create
     public boolean addEnrollment(Enrollment enrollment) {
-        String sql = "INSERT INTO enrollment (student_id, course_id, semester_id, score, grade) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO enrollment (enrollment_id, student_id, course_id, semester_id, score, grade) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, enrollment.getStudentId());
-            stmt.setInt(2, enrollment.getCourseId());
-            stmt.setInt(3, enrollment.getSemesterId());
-            stmt.setDouble(4, enrollment.getScore());
-            stmt.setString(5, enrollment.getGrade());
+            stmt.setInt(1, enrollment.getEnrollmentId());
+            stmt.setInt(2, enrollment.getStudentId());
+            stmt.setInt(3, enrollment.getCourseId());
+            stmt.setInt(4, enrollment.getSemesterId());
+            stmt.setDouble(5, enrollment.getScore());
+            stmt.setString(6, enrollment.getGrade());
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
